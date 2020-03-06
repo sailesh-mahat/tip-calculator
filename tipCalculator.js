@@ -2,16 +2,16 @@
 function calculateTip() {
   var billAmt = document.getElementById("billamt").value;
   var serviceQual = document.getElementById("serviceQual").value;
-  var numOfPeople = document.getElementById("peopleAmt").value;
+  var numOfPeople = document.getElementById("peopleamt").value;
 
-  //variable input
+  //validate input
   if (billAmt === "" || serviceQual === 0) {
     alert("Please enter values");
     return;
   }
 
 //Check to see if the input is empty or less than or equal to 1
-  if (numOfPeople === 0 || numOfPeople <==1) {
+  if (numOfPeople === "" || numOfPeople <=1) {
     numOfPeople = 1;
   document.getElementById("each").style.display="none";
 } else{
@@ -28,4 +28,13 @@ total = total.toFixed(2);
 document.getElementById("totalTip").style.display = "block";
 document.getElementById("tip").innerHTML = total;
 
+}
+
+//Hide the tip amount on load
+document.getElementById("totalTip").style.display = "none";
+document.getElementById("each").style.display = "none";
+
+//Click to call function
+document.getElementById("calculate").onclick = function() {
+  calculateTip();
 }
